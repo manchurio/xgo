@@ -5,7 +5,7 @@
 package xmath
 
 import (
-	"github.com/manchurio/xgo/constraints"
+	"github.com/manchurio/xgo/internal/constraints"
 	"reflect"
 	"testing"
 )

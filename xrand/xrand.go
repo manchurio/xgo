@@ -5,28 +5,16 @@
 package xrand
 
 import (
-	"github.com/manchurio/xgo/constraints"
-	"math/rand"
-	"sync"
-	"time"
+	"github.com/manchurio/xgo/internal/constraints"
+	"github.com/manchurio/xgo/irand"
 )
-
-var pool = sync.Pool{
-	New: func() any {
-		return rand.New(rand.NewSource(time.Now().UnixNano()))
-	},
-}
-
-func getRand() *rand.Rand {
-	return pool.Get().(*rand.Rand)
-}
 
 // RandInt Returns a random int within [startInclusive,endInclusive]
 func RandInt[T constraints.Integer](startInclusive, endInclusive T) T {
-	r := getRand()
+	r := irand.GetRand()
 	res := r.Int63n(int64(endInclusive-startInclusive+1)) + int64(startInclusive)
 	t := T(res)
-	pool.Put(r)
+	irand.PutRand(r)
 	return t
 }
 
