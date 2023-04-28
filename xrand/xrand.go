@@ -15,8 +15,8 @@ func RandInt[T constraints.Integer](startInclusive, endExclusive T) T {
 	return T(res)
 }
 
-// RandIntN Returns a random int within startInclusive - endExclusive
-func RandIntN[T constraints.Integer](startInclusive, endExclusive T) T {
-	res := rand.Int63n(int64(endExclusive-startInclusive)) + int64(startInclusive)
+// RandIntN Returns a random int within startInclusive - endInclusive
+func RandIntN[T constraints.Integer](startInclusive, endInclusive T) T {
+	res := rand.Int63n(int64(endInclusive-startInclusive)) + int64(startInclusive)
 	return T(res)
 }
