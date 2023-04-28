@@ -66,3 +66,52 @@ func TestSum(t *testing.T) {
 		})
 	}
 }
+
+func TestFirstB(t *testing.T) {
+	type args[T any] struct {
+		s []T
+	}
+	type testCase[T any] struct {
+		name  string
+		args  args[T]
+		want  T
+		want1 bool
+	}
+	tests := []testCase[int]{
+		{args: args[int]{s: []int{1, 2, 3}}, want: 1, want1: true},
+		{args: args[int]{s: []int{}}, want: 0, want1: false},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, got1 := xslices.FirstB(tt.args.s)
+			if !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("FirstB() got = %v, want %v", got, tt.want)
+			}
+			if got1 != tt.want1 {
+				t.Errorf("FirstB() got1 = %v, want %v", got1, tt.want1)
+			}
+		})
+	}
+}
+
+func TestLast(t *testing.T) {
+	type args[T any] struct {
+		s []T
+	}
+	type testCase[T any] struct {
+		name string
+		args args[T]
+		want T
+	}
+	tests := []testCase[int]{
+		{args: args[int]{[]int{1, 2, 3}}, want: 3},
+		{args: args[int]{[]int{}}, want: 0},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := xslices.Last(tt.args.s); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("Last() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

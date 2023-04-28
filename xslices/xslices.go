@@ -38,3 +38,33 @@ func Sum[T constraints.Number](s []T) (sum T) {
 	}
 	return sum
 }
+
+// Last Get the last value of the slice, return zero-value when the length is 0
+func Last[T any](s []T) T {
+	l, _ := LastB(s)
+	return l
+}
+
+// LastB Get the last value of the slice, return zero-value,false when the length is 0
+func LastB[T any](s []T) (T, bool) {
+	if l := len(s); l > 0 {
+		return s[l-1], true
+	}
+	var t T
+	return t, false
+}
+
+// First Get the first value of the slice, return zero-value when the length is 0
+func First[T any](s []T) T {
+	l, _ := FirstB(s)
+	return l
+}
+
+// FirstB Get the first value of the slice, return zero-value,false when the length is 0
+func FirstB[T any](s []T) (T, bool) {
+	if l := len(s); l > 0 {
+		return s[0], true
+	}
+	var t T
+	return t, false
+}
