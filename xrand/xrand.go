@@ -6,7 +6,7 @@ package xrand
 
 import (
 	"github.com/manchurio/xgo/internal/constraints"
-	"github.com/manchurio/xgo/irand"
+	"github.com/manchurio/xgo/internal/irand"
 )
 
 // RandInt Returns a random int within [startInclusive,endInclusive]
