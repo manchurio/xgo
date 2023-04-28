@@ -5,7 +5,7 @@
 package xrand
 
 import (
-	"github.com/manchurio/xgo/internal/constraints"
+	"github.com/manchurio/xgo/constraints"
 	"math/rand"
 	"sync"
 	"time"
